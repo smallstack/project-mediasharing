@@ -1,0 +1,55 @@
+<page-header text="Groups"></page-header>
+
+
+
+<div class="ui container">
+	<h2 class="ui header">Overview</h2>
+
+
+
+	<table class="ui striped table">
+		<thead>
+			<tr>
+				<th data-field="name">Name</th>
+				<th data-field="users">Users</th>
+				<th data-field="presenters">Presenters</th>
+				<th data-field="actions"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr ng-repeat="group in groups">
+				<td>{{group.name}}</td>
+				<td>{{group.userIds.length}}</td>
+				<td>{{group.presenterIds.length}}</td>
+				<td><a href="/groups/{{group._id}}/overview" ng-if="vm.inGroup(group.ownerIds, $root.currentUser)">manage</a></td>
+			</tr>
+			<tr ng-if="!groups || groups.length === 0">
+				<td colspan="4" class="center-align">
+					No groups yet
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+			<h2 class="ui header">Create Group</h2>
+			<div class="input-group">
+				<input placeholder="Group Name" type="text" class="form-control" ng-model="newGroupName">
+				<span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="vm.createNewGroup()">Create</button>
+                </span>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<h2 class="ui header">Join Group</h2>
+			<div class="input-group">
+				<input placeholder="Group Password" type="text" class="form-control" ng-model="newGroupPassword">
+				<span class="input-group-btn">
+    			<button class="btn btn-default" ng-click="vm.joinGroup()">Join</button>
+            </span>
+			</div>
+		</div>
+	</div>
+</div>

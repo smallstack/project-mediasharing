@@ -1,0 +1,38 @@
+<page-header text="Groups"></page-header>
+
+<div class="container">
+
+    <h2>Manage "{{group.name}}"</h2>
+
+    <div class="row group-overview" ng-if="group">
+
+
+        <div class="col-xs-12 col-md-4" style="cursor:pointer" ui-sref="website.grouppresenters({groupId : group.id})">
+            <div align="center">
+                <i class="material-icons">airplay</i>
+                <h3>Connect Presenters</h3>
+                <p class="light center">Manage Presenters for this group by adding or removing them.</p>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4" style="cursor:pointer" ui-sref="website.groupusers({groupId : group.id})">
+            <div align="center">
+                <i class="material-icons">group</i>
+                <h3>Manage Users</h3>
+                <p class="light center">Add &amp; Remove Users, give them Permissions to View, Share or Manage!</p>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4" style="cursor:pointer" ui-sref="website.groupsettings({groupId : group.id})">
+            <div align="center">
+                <i class="material-icons">settings</i>
+                <h3>Group Settings</h3>
+                <p class="light center">Change the Group Name and other things. Actually, it's only the Group Name you can change here for now.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div ng-if="!group">
+        Somehow, no group got loaded...
+    </div>
+
+</div>

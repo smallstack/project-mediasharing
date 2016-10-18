@@ -1,0 +1,68 @@
+<page-header text="Share some Media">
+</page-header>
+<div class="container">
+
+    <div align="right" class="form-group">
+        <label>Current Sharing Group</label>
+        <select class="form-control" ng-options="group.id as group.name for group in groups" style="width:200px" ng-model="currentGroupId"></select>
+    </div>
+
+    <h2>Sharing</h2>
+    <p>
+        <small>{{presenters.length}} Presenter(s) online</small>
+    </p>
+
+    <div ng-show="currentGroupId === undefined">
+        <h3>Please select a group first!</h3>
+    </div>
+    <div ng-show="currentGroupId !== undefined">
+
+
+        <!--                    <span class="input-group-btn"><button class="btn btn-default" id="clipboard-button" ng-click="copyDeepLink()" ng-disabled="!newSharedMedia.hasValidUrl()"><i class="anchor icon"></i></button></span>-->
+
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Please paste your link here..." ng-model="newSharedMediaUrl">
+            <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="vm.shareMedia(newSharedMediaUrl)">Share</button>
+                    </span>
+        </div>
+
+
+        <h2>Playlist</h2>
+        <table class="ui striped table">
+            <thead>
+                <tr>
+                    <th>When</th>
+                    <th>What</th>
+                    <th>Actions</th>
+                    <th>Currently Playing</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="sharedMedia in sharedMedias | orderBy:'-date'">
+                    <td><span am-time-ago="sharedMedia.date"></span></td>
+                    <td><a target="_blank" href="{{sharedMedia.url}}">{{sharedMedia.url}}</a></td>
+                    <td>
+                        <button class="btn btn-default" ng-click="vm.shareMedia(sharedMedia.url)">reshare</button>
+                    </td>
+                    <td>
+                        <div ng-repeat="presenter in presenters">
+                            <span ng-if="presenter.mediaQueueIds[0] === sharedMedia.id">
+                                    <i class="fa fa-fast-forward controlPresenterBtn" ng-click="presenter.next()" title="next video"></i>
+                                    <i class="fa fa-stop controlPresenterBtn" ng-click="presenter.stop()" title="stop video"></i>
+                                    <!--<i class="pause link icon controlPresenterBtn" data-control="pause" title="pause video"></i>
+                                    <i class="play link icon controlPresenterBtn" data-control="play" title="play paused video"></i>
+                                    <i class="angle double left link icon controlPresenterBtn" data-control="slower" title="play slower"></i>
+                                    <i class="angle double right link icon controlPresenterBtn" data-control="faster" title="play faster"></i>-->
+                                    <i class="fa fa-volume-off controlPresenterBtn" ng-click="presenter.toggleMute()" title="mute video"></i>
+                                    <i class="fa fa-volume-down controlPresenterBtn" ng-click="presenter.decreaseVolume()" title="volume up (louder)"></i>
+                                    <i class="fa fa-volume-up controlPresenterBtn" ng-click="presenter.increaseVolume()" title="volume down (less louder)"></i>
+                                </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

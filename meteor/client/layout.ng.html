@@ -1,0 +1,17 @@
+<div ng-controller="MainController">
+    <sidebarmenu toggle-menu-ref="menuToggle" side="right"></sidebarmenu>
+    <div id="mainContent">
+        <div class="mobile-menu-button visible-xs visible-sm" ng-click="toggleMenu($event)">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div class="page-logo">mediasharing</div>
+        <navigation class="hidden-xs hidden-sm" type="main"></navigation>
+        <!--<is-verified></is-verified>-->
+        <div ui-view></div>
+        <!--<smallstack-version-footer></smallstack-version-footer>-->
+    </div>
+    <news></news>
+    <online-status></online-status>
+</div>

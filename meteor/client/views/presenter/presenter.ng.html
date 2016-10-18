@@ -1,0 +1,49 @@
+<div class="presenter-container-overlay" ng-click="vm.openConfigurationPanel()"></div>
+<div class="header-component" ng-if="presenter.headerText !== undefined && presenter.headerText !== ''">
+    <div class="page-logo">{{presenter.headerText}}</div>
+</div>
+<div class="presenter-container">
+
+    <div style="position:fixed;height:100%;width:100%;top:0;left:0;margin-top:10% " ng-if="presenter.groupId === undefined">
+
+        <div class="text-center">
+            <h1 class="presenter-text" ng-show="presenter.code !== undefined">{{presenter.code}}</h1>
+            <h1 class="presenter-text" ng-show="presenter.code === undefined">connecting...</h1>
+
+            <div class="alert">
+                <h1><i class="fa fa-info"></i></h1>
+                <div class="content">
+                    This Presenter is not mapped to a sharing group right now.
+                    <br> Please go to your group administration and enter this 5 digit code.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <iframe id="staticWebsiteContainer" ng-if="presenter.groupId !== undefined && staticWebsiteUrl !== undefined" class="static-website-container"
+        src="{{staticWebsiteUrl}}" seamless="seamless " scrolling="no "></iframe>
+
+
+    <div id="player" class="youtube-player-div"></div>
+</div>
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="configurationModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Do you really want to reset this presenter?</h4>
+            </div>
+            <div class="modal-body">
+                <p>Resetting a presenter results in a new presenter token which has to be reassigned to sharing groups!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">NO</button>
+                <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" ng-click="vm.registerPresenter()">YES</button>
+            </div>
+        </div>
+    </div>
+</div>

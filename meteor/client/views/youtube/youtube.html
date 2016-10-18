@@ -1,0 +1,67 @@
+<!--<template name="youtube">
+    <div>
+        <h1 class="ui dividing top attached header"><i class="big youtube icon"></i> <div class="content">Youtube TOP 25</div></h1>
+
+        <div class="ui attached segment">
+
+            <table class="ui table">
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <h3>Title</h3>
+                    </td>
+                    <td>
+                        <h3>Hits</h3>
+                    </td>
+                    <td>
+                        <h3>Url</h3>
+                    </td>
+                    <td>
+                        <h3>Actions</h3>
+                    </td>
+                    <td>
+                        <h3>Active Presenters</h3>
+                    </td>
+                </tr>
+
+                {{#each medias}}
+                <tr>
+                    <td height="50px">
+                        <img src="{{getThumbnail}}" width="50px">
+                    </td>
+                    <td>#{{getRank}}
+                    </td>
+                    <td>{{getTitle}}
+                    </td>
+                    <td>{{metadata.hits}}
+                    </td>
+                    <td><a href="{{url}}">{{url}}</a>
+                    </td>
+                    <td>
+                        <button id="reshareBtn" class="ui green button">reshare</button>
+                    </td>
+                    <td>
+                        {{#each presenters}} {{#if $eq currentSharedMedia ../_id}}
+                        <div align="center">
+                            {{name}}
+                            <br/>
+                            <i class="fast forward link icon" ng-click="controlPresenter(presenter._id,'forward')" title="skip video"></i>
+                            <i class="pause link icon" ng-click="controlPresenter(presenter._id,'pause')" title="pause video"></i>
+                            <i class="play link icon" ng-click="controlPresenter(presenter._id,'play')" title="play paused video"></i>
+                            <i class="angle double left link icon" ng-click="controlPresenter(presenter._id,'slower')" title="play slower"></i>
+                            <i class="angle double right link icon" ng-click="controlPresenter(presenter._id,'faster')" title="play faster"></i>
+                            <i class="volume off link icon" ng-click="controlPresenter(presenter._id,'mute')" title="mute video"></i>
+                            <i class="volume down link icon" ng-click="controlPresenter(presenter._id,'volumedown')" title="volume up (louder)"></i>
+                            <i class="volume up link icon" ng-click="controlPresenter(presenter._id,'volumeup')" title="volume down (less louder)"></i>
+                        </div>
+                        {{/if}} {{/each}}
+                    </td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</template>-->

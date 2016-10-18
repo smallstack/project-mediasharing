@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700);
+.well { 
+    background: #F5F5F5;
+}
+.well h1,
+.jumbotron h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h4 {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.16);
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb40 {
+    margin-bottom: 40px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.page-logo {
+    position: absolute;
+    top: 0.9em;
+    padding-left: 2.2em;
+    text-align: center;
+    color: #fff;
+    font-weight: bolder;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+
+.page-logo img {
+    height: 25px;
+}
+
+.header-component {
+    background-size: cover;
+    background-position: center center;
+    background-color: #171717;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-right {
+    z-index: 1;
+}
+
+.header-component-text {
+    color: #fff;
+    padding-left: 0.5em;
+}
+
+@media only screen and (max-width: 720px) {
+    .page-logo {
+        top: 15px;
+        font-size: 14px;
+        width: 100%;
+        left: 0px;
+    }
+
+    .header-component {
+        background-size: cover;
+        background-position: center center;
+        height: 100px;
+    }
+    
+    .header-component-text {
+        font-size: 30px;
+        margin-top: 30px;
+    }
+    
+    .ranking.container {
+        padding: 0px;
+    }
+}
+
+.ellipsis-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    vertical-align: middle;
+    font-weight: bold;
+}

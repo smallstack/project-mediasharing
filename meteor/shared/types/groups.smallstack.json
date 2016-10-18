@@ -1,0 +1,125 @@
+{
+	"collection": {
+		"name": "groups"
+	},
+	"service": {
+		"queries": [
+			{
+				"name": "getMyGroups",
+				"selector": {
+					"$or": [
+						{
+							"userIds": "_currentLoggedInUser_"
+						}
+					]
+				}
+			},
+			{
+				"name": "getGroupById",
+				"selector": {
+					"_id": ":id:string"
+				}
+			}
+		],
+		"securedmethods": [
+			{
+				"name": "createNewGroup",
+				"parameters": [
+					"newGroupName:String"
+				],
+				"returns": "Group",
+				"visibility": "server"
+			},
+			{
+				"name": "joinGroup",
+				"parameters": [
+					"password:String"
+				],
+				"returns": "Group",
+				"visibility": "server"
+			},
+			{
+				"name": "promoteOwner",
+				"parameters": [
+					"groupId:String",
+					"userId:String"
+				],
+				"returns": "boolean",
+				"visibility": "server"
+			},
+			{
+				"name": "promoteSharer",
+				"parameters": [
+					"groupId:String",
+					"userId:String",
+					"yesNo:Boolean"
+				],
+				"returns": "boolean",
+				"visibility": "server"
+			},
+			{
+				"name": "addPresenter",
+				"parameters": [
+					"groupId:String",
+					"presenterCode:Number"
+				],
+				"visibility": "server",
+				"returns": "String"
+			},
+			{
+				"name": "removePresenter",
+				"parameters": [
+					"groupId:String",
+					"presenterId:String"
+				],
+				"visibility": "server",
+				"returns": "boolean"
+			},
+			{
+				"name": "resetJoinPassword",
+				"parameters": [
+					"groupId:String"
+				],
+				"returns": "string"
+			}
+		]
+	},
+	"model": {
+		"name": "Group",
+		"schema": [
+			{
+				"name": "userIds",
+				"type": "foreign[]",
+				"collection": "users",
+				"optional": true,
+				"defaultValue": []
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "presenterIds",
+				"type": "foreign[]",
+				"collection": "presenters",
+				"optional": true,
+				"defaultValue": []
+			},
+			{
+				"name": "ownerIds",
+				"type": "foreign[]",
+				"collection": "users"
+			},
+			{
+				"name": "sharerIds",
+				"type": "foreign[]",
+				"collection": "users"
+			},
+			{
+				"name": "joinPassword",
+				"type": "string",
+				"optional": true
+			}
+		]
+	}
+}

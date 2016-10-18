@@ -1,0 +1,70 @@
+<page-header text="Groups"></page-header>
+
+<div class="ui container">
+	<div class="row">
+
+		<div class="col s12">
+			<h2>{{group.name}} Users</h2>
+
+			<div ng-if="group">
+
+				<div class="col s12 card">
+					<h3>Manage Users</h3>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th data-field="id">User</th>
+								<th data-field="price">Can View</th>
+								<th data-field="price">Can Share</th>
+								<th data-field="name">Is Owner</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr ng-repeat="userId in group.userIds">
+								<td>{{ users[userId].profile.displayName }}</td>
+								<td>
+									<div class="switch">
+										<label>
+											<input type="checkbox" ng-checked="vm.inGroup(group.userIds, userId)" disabled>
+											<span class="lever"></span>
+										</label>
+									</div>
+								</td>
+								<td>
+									<div class="switch">
+										<label>
+											<input type="checkbox" ng-checked="vm.inGroup(group.sharerIds, userId)" ng-click="vm.promoteSharer(userId)">
+											<span class="lever"></span>
+										</label>
+									</div>
+								</td>
+								<td>
+									<div class="switch">
+										<label>
+											<input type="checkbox" ng-checked="vm.inGroup(group.ownerIds, userId)" disabled>
+											<span class="lever"></span>
+										</label>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<h3>Join Password</h3>
+					<div class="input-group">
+						<input type="text" class="form-control" disabled ng-model="group.joinPassword">
+						<span class="input-group-btn">
+                    		<button class="btn btn-default" ng-click="vm.newJoinPassword()">Create new Random Password</button>
+                		</span>
+					</div>
+				</div>
+			</div>
+			<div ng-if="!group">
+				Somehow, no group got loaded...
+			</div>
+		</div>
+	</div>
+</div>

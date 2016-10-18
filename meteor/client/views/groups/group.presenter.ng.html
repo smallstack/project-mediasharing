@@ -1,0 +1,31 @@
+<page-header text="Presenter Configuration"></page-header>
+
+<div class="ui container">
+
+
+    <div class="form-group">
+        <label>Presenter ID</label>
+        <input type="text" ng-model="presenter.id" disabled class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Header Text (empty field disables header)</label>
+        <input type="text" ng-model="presenter.headerText" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Static Website</label>
+        <input type="text" ng-model="presenter.staticWebsite" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Static Website Automatic Refresh Interval</label>
+        <input type="range" ng-model="presenter.staticWebsiteRefreshInterval" min="0" step="1" max="180" style="width:100%" class="form-control">
+        <div align="right">
+            <small ng-if="presenter.staticWebsiteRefreshInterval != 0">{{presenter.staticWebsiteRefreshInterval}} Minute(s)</small>
+            <small ng-if="presenter.staticWebsiteRefreshInterval == 0">Disabled</small>
+        </div>
+    </div>
+    <div align="right">
+        <button class="btn btn-default" ui-sref="website.grouppresenters({groupId:groupId})">Back</button>
+        <button class="btn btn-primary" type="submit" ng-click="vm.savePresenter()">Save Presenter</button>
+    </div>
+
+</div>

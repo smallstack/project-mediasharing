@@ -1,0 +1,36 @@
+{
+	"collection": {
+		"name": "metadata"
+	},
+	"service": {
+		"name": "MetaDataService",
+		"queries": [
+			{
+				"name": "getMetaDataById",
+				"selector": {
+					"_id": ":id:string"
+				}
+			}
+		]
+	},
+	"model": {
+		"name": "MetaData",
+		"schema": [
+			{
+				"name": "groupId",
+				"type": "foreign",
+				"collection": "groups"
+			},
+			{
+				"name": "title",
+				"type": "string",
+				"optional": true
+			},
+			{
+				"name": "hits",
+				"type": "number",
+				"optional": true
+			}
+		]
+	}
+}

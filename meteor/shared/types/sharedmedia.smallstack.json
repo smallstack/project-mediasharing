@@ -1,0 +1,74 @@
+{
+    "collection": {
+        "name": "sharedmedias"
+    },
+    "service": {
+        "name": "SharedMediaService",
+        "queries": [
+            {
+                "name": "getAllMediasByGroupId",
+                "selector": {
+                    "groupId": ":groupId"
+                },
+                "sorting": {
+                    "date": -1
+                }
+            },
+            {
+                "name": "getSharedMediaById",
+                "selector": {
+                    "_id": ":id:string"
+                }
+            },
+            {
+                "name": "getSharedMediasByIds",
+                "selector": {
+                    "_id": {
+                        "$in": ":ids:string[]"
+                    }
+                }
+            }
+        ],
+        "securedmethods": [
+            {
+                "name": "shareMedia",
+                "parameters": [
+                    "media:SharedMedia"
+                ],
+                "returns": "SharedMedia",
+                "visibility": "server"
+            }
+        ]
+    },
+    "model": {
+        "name": "SharedMedia",
+        "schema": [
+            {
+                "name": "ownerId",
+                "type": "foreign",
+                "collection": "users",
+                "optional": true
+            },
+            {
+                "name": "url",
+                "type": "string"
+            },
+            {
+                "name": "groupId",
+                "type": "foreign",
+                "collection": "groups"
+            },
+            {
+                "name": "date",
+                "type": "date",
+                "optional": true
+            },
+            {
+                "name": "metadataId",
+                "type": "foreign",
+                "collection": "metadata",
+                "optional": true
+            }
+        ]
+    }
+}

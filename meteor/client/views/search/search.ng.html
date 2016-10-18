@@ -1,0 +1,55 @@
+<div>
+    <div class="search-results-background dimmer" id="searchResultsBackground"></div>
+    <div>
+        <div class="item">
+            <div class="ui icon fluid input">
+                <input type="text" placeholder="Search..." id="searchInput">
+                <i class="search link icon"></i>
+            </div>
+
+            <div ng-if="hasResults">
+
+                <div class="ui segment search-results">
+                    <div align="right">
+                        <i class="ui remove link icon" id="searchCloseBtn"></i>
+                    </div>
+                    <div ng-if="hasEmptyResult">
+                        <div>
+                            <h3>Sorry, no search results...</h3>
+                        </div>
+                    </div>
+                    <div ng-if="!hasEmptyResult">
+                        <table class="ui table" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <h3>Title</h3>
+                                    </th>
+                                    <th>
+                                        <h3>Actions</h3>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="searchResult in searchResults.results">
+                                    <td height="50px">
+                                        <img src="{{searchResult.getThumbnail}}" width="50px">
+                                    </td>
+                                    <td>{{colorString}}
+                                    </td>
+
+                                    <td>
+                                        <button class="ui small green button " id="shareMediaBtn">reshare</button>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<page-header text="Groups"></page-header>
+
+
+
+<div class="ui container">
+	<div class="row">
+
+		<div class="col s12">
+			<h2>{{group.name}} Settings</h2>
+
+			<div ng-if="group">
+
+				<div class="col s12 card">
+					<h3>Rename Group</h3>
+					<div class="input-field col s12 l10">
+						<input type="text" class="validate" ng-model="group.name">
+					</div>
+					<div class="input-field col s12 l2">
+						<button class="{{colors.buttonOkColor}} btn" ng-click="vm.updateGroup()">Save</button>
+					</div>
+				</div>
+
+
+			</div>
+			<div ng-if="!group">
+				Somehow, no group got loaded...
+			</div>
+		</div>
+	</div>
+</div>

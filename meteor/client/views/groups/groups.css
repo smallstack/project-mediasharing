@@ -1,0 +1,15 @@
+.group-overview i {
+    margin: 40px 0;
+    color: #000;
+    font-size: 7rem;
+    display: block;
+}
+
+.pincodeInput {
+    border: 1px solid #ddd !important;
+    text-align: center !important;
+    font-size: 3rem !important;
+	font-family: "Roboto" !important;
+    font-weight: 100 !important;
+	border-bottom : 2px solid black !important;
+}

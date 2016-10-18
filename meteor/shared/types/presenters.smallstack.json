@@ -1,0 +1,142 @@
+{
+    "collection": {
+        "name": "presenters"
+    },
+    "service": {
+        "name": "PresenterService",
+        "queries": [
+            {
+                "name": "getPresentersByGroupId",
+                "selector": {
+                    "groupId": ":groupId"
+                }
+            },
+            {
+                "name": "getPresentersByHash",
+                "selector": {
+                    "hash": ":hash"
+                }
+            },
+            {
+                "name": "getPresenterById",
+                "selector": {
+                    "_id": ":id:string"
+                }
+            },
+            {
+                "name": "getPresentersByIds",
+                "selector": {
+                    "_id": {
+                        "$in": ":ids:string[]"
+                    }
+                }
+            }
+        ],
+        "securedmethods": [
+            {
+                "name": "registerPresenter",
+                "parameters": [],
+                "returns": "Presenter"
+            },
+            {
+                "name": "isRegistered",
+                "parameters": [
+                    "code:String"
+                ]
+            },
+            {
+                "name": "sendKeepAlive",
+                "parameters": [
+                    "hash:String"
+                ]
+            },
+            {
+                "name": "resetPresenter",
+                "parameters": [
+                    "hash:String"
+                ]
+            }
+        ]
+    },
+    "model": {
+        "name": "Presenter",
+        "schema": [
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "hash",
+                "type": "string"
+            },
+            {
+                "name": "code",
+                "type": "number"
+            },
+            {
+                "name": "groupId",
+                "type": "foreign",
+                "collection": "groups",
+                "optional": true
+            },
+            {
+                "name": "isPaused",
+                "type": "boolean",
+                "defaultValue": false
+            },
+            {
+                "name": "isMuted",
+                "type": "boolean",
+                "defaultValue": false
+            },
+            {
+                "name": "volume",
+                "type": "number",
+                "defaultValue": 80,
+                "minCount": 0,
+                "maxCount": 100
+            },
+            {
+                "name": "playbackRate",
+                "type": "number",
+                "defaultValue": 0,
+                "minCount": -2,
+                "maxCount": 2
+            },
+            {
+                "name": "mediaQueueIds",
+                "type": "foreign[]",
+                "collection": "sharedmedias",
+                "optional": true
+            },
+            {
+                "name": "controlEvents",
+                "type": "string[]",
+                "optional": true,
+                "defaultValue": []
+            },
+            {
+                "name": "lastUpdate",
+                "type": "date",
+                "optional": true
+            },
+            {
+                "name": "staticWebsite",
+                "type": "string",
+                "optional": true
+            },
+            {
+                "name": "staticWebsiteRefreshInterval",
+                "type": "number",
+                "optional": true,
+                "defaultValue": 5
+            },
+            {
+                "name": "headerText",
+                "type": "string",
+                "optional": true,
+                "defaultValue": "Mediasharing.io Presenter"
+            }
+        ]
+    }
+}
